@@ -8,6 +8,15 @@
 
 #define TARGET 600851475143
 
+// static uint32_t sqrt_up(uint64_t number)
+// {
+//     uint32_t    ret = 0;
+
+//     while (ret * ret < number)
+//         ret += 1;
+//     return ret;
+// }
+
 static uint32_t euler_3(void)
 {
     uint32_t    largest_prime_factor = 0;
@@ -22,7 +31,7 @@ static uint32_t euler_3(void)
     {
         if (target % i == 0)
         {
-            if (i > largest_prime_factor)
+            if (i >largest_prime_factor)
                 largest_prime_factor = i;
             target /= i;
             i = 3;
