@@ -13,7 +13,7 @@ int main(void)
 {
     unsigned int i = 2520; // Divisible by all numbers from 1 to 10.
 
-    while (i += 2)
+    while (i += 20) // since 2520 is divisible by 20 and the final result has to be too.
     {
         if (i % 2 == 0 && i % 3 == 0 && i % 4 == 0 && i % 5 == 0 && i % 6 == 0
             && i % 7 == 0 && i % 8 == 0 && i % 9 == 0 && i % 10 == 0 && i % 11 == 0 
