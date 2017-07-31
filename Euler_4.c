@@ -44,9 +44,10 @@ int		main()
 	while (j > 900)
 	{
 		unsigned int nbr = i * j;
-		if (is_palindromic(nbr) && nbr > res)
+		if (nbr > res && is_palindromic(nbr))
 		{
 			res = nbr;
+			i = 1;
 		}
 		i--;
 		if (i == 0)
