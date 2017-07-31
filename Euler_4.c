@@ -41,7 +41,7 @@ int		main()
 	unsigned int i = 999;
 	unsigned int j = 999;
 	unsigned int res = 0;
-	while (j > 99)
+	while (j > 900)
 	{
 		unsigned int nbr = i * j;
 		if (is_palindromic(nbr) && nbr > res)
