@@ -53,7 +53,7 @@ int		main()
 		if (i == 0)
 		{
 			j--;
-			i = 999;
+			i = j;
 		}
 	}
 	printf("Result : %d\n", res);
