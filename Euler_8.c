@@ -35,7 +35,7 @@ static const char	*sequence = "7316717653133062491922511967442657474235534919493
 
 int		main(void)
 {
-	uint64_t		result = 0; //uint64 to avoid overlaps, I am expecting a very large number here.
+	uint64_t		result = 0; // uint64 to avoid overlaps, I am expecting a very large number here.
 
 	for(uint64_t i = 0; i < SEQUENCE_LEN - TARGET; i++)
 	{
