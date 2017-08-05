@@ -6,23 +6,28 @@
 #include <stdio.h>
 #define TARGET 10001
 
-static unsigned int	sqrt_tunc(unsigned int number)
+/*
+**  The perfect limit would be the square root rounded up, but since this function will be
+**  called a lot and I don't need an exact result as long as it is higher, I made it faster
+*/  
+static unsigned int	get_reasonable_limit(unsigned int number)
 {
 	unsigned int i = 0;
 
 	while (i * i < number)
-		i++;
+		i += 5;
 	return i;
 }
 
-
-//Here, I don't check if the number is even since it will already be checked by the main
+/*
+**  Here, I don't check if the number is even since it will already be checked by the main
+*/
 static int		is_prime(unsigned int number)
 {
 	unsigned int i = 3;
-	unsigned int square_root = sqrt_tunc(number);
+	unsigned int reasonable_limit = get_reasonable_limit(number);
 
-	while (i <= square_root)
+	while (i <= reasonable_limit)
 	{
 		if (number % i == 0)
 			return 0;
