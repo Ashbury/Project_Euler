@@ -28,7 +28,7 @@ static uint64_t factorial(uint64_t nb)
 **  There is a formula to obtain the number of routes for a given square of n x n.
 **  It has to do with Pascal's Triangle.
 **  The formula is : (2n)! / n! ^ 2
-**  The answer with 20 is too big for 64bit, so I computed it with a calculator.
+**  The answer with 20 is too big for 64bit, so I computed it with a python.
 */
 int     main(void)
 {
