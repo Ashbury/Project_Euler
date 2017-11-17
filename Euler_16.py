@@ -9,6 +9,6 @@ ret = 0
 target = str(2 ** 1000)
 
 for x in target:
-    ret = ret + (ord(x) - 48)
+    ret = ret + int(x)
 
 print(ret)
