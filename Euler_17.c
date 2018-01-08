@@ -8,3 +8,23 @@
 **  and 115 (one hundred and fifteen) contains 20 letters.
 **  The use of "and" when writing out numbers is in compliance with British usage.
 */
+
+#include <stdio.h>
+
+#define TARGET 1000
+
+static size_t	compute_number(size_t nb)
+{
+	if ()
+}
+
+int	main(void)
+{
+	size_t	result = 0;
+
+	for (size_t i = 1; i < TARGET; i++)
+		result += compute_number(i);
+
+	printf("Result : %zu\n", result);
+	return 0;
+}
