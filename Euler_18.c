@@ -32,7 +32,6 @@
 #include <string.h>
 
 #define NB_ROWS 15
-#define NB_VALUE 120
 
 static int	**init_array(char *data)
 {
