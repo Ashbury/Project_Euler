@@ -51,40 +51,20 @@ static int	**init_array(char *data)
 	return ret;
 }
 
-static int	get_weigth(int **array, int index)
+static void	place_weigth(int **array, int i)
 {
-	int	ret = array[0][0] + array[NB_ROWS - 1][index];
-
-	for (int i = (NB_ROWS - 2); i > 0; i--)
+	for (int j = 0; j <= i; j++)
 	{
-		if (index == 0)
-			ret += array[i][0];
-		else if (index == (i + 1))
-		{
-			ret += array[i][i];
-			index = i;
-		}
-		else
-		{
-			int max = array[i][index - 1] > array[i][index] ? (index - 1) : index;
-			ret += array[i][max];
-			index = max;
-		}
+		int max = array[i + 1][j] > array[i + 1][j + 1] ? array[i + 1][j] : array[i + 1][j + 1];
+		array[i][j] += max;
 	}
-	return ret;
 }
 
 static void	solve(int **array)
 {
-	int result = 0;
-
-	for(int i = 0; i < NB_ROWS; i++)
-	{
-		int tmp = get_weigth(array, i);
-		if (tmp > result)
-			result = tmp;
-	}
-	printf("Result: %d\n", result);
+	for (int i = NB_ROWS - 2; i >= 0; i--)
+		place_weigth(array, i);
+	printf("Result: %d\n", array[0][0]);
 }
 
 int			main(void)
