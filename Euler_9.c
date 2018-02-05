@@ -34,7 +34,7 @@ int		main(void)
 	{
 		if (is_a_pythagorean_triplet(a, b, c))
 		{
-			printf("Result : %u with a = %u, b = %u, c = %u\n", a * b * c, a, b, c);
+			printf("Result: %u with a = %u, b = %u, c = %u\n", a * b * c, a, b, c);
 			found++;
 		}
 		b++;

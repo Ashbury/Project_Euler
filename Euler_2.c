@@ -30,7 +30,7 @@ static uint64_t euler_2(void)
 
 int     main(void)
 {
-    printf("Result : %llu\n", euler_2());
+    printf("Result: %llu\n", euler_2());
 
     return 0;
 }

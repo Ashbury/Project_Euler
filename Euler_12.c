@@ -70,7 +70,7 @@ int		main(void)
 		uint64_t triangle_nb = get_nth_triangle_number(i);
 		if (get_number_of_divisors(triangle_nb) > TARGET)
 		{
-			printf("Result : %llu\n", triangle_nb);
+			printf("Result: %llu\n", triangle_nb);
 			break ;
 		}
 		i++;

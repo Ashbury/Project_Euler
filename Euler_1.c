@@ -22,7 +22,7 @@ int                     main(int ac, char **av)
 {
     if (ac != 4)
     {
-        fprintf(stderr, "I need three arguments : mult1, mult2, range\n");
+        fprintf(stderr, "I need three arguments: mult1, mult2, range\n");
         return -1;
     }
 
@@ -30,7 +30,7 @@ int                     main(int ac, char **av)
     unsigned int mult2 = (unsigned int)atoi(av[2]);
     unsigned int range = (unsigned int)atoi(av[3]);
 
-    printf("The sum of all multiples of %u or %u from 0 to %u is : %u\n", mult1, 
+    printf("The sum of all multiples of %u or %u from 0 to %u is %u\n", mult1, 
     mult2, range, euler_1(mult1, mult2, range));
     
     return 0;

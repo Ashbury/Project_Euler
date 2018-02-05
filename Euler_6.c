@@ -21,6 +21,6 @@ int		main(void)
 		sum_of_squares += i * i;
 		sum += i;
 	}
-	printf("Result : %u\n", (sum * sum) - sum_of_squares);
+	printf("Result: %u\n", (sum * sum) - sum_of_squares);
 	return 0;
 }

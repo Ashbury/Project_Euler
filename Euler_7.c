@@ -40,7 +40,7 @@ int		main(void)
 {
 	if (TARGET == 1)
 	{
-		printf("Result : 2\n");
+		printf("Result: 2\n");
 		return 0;
 	}
 	
@@ -54,7 +54,7 @@ int		main(void)
 			nth++;
 			if (nth == TARGET)
 			{
-				printf("Result : %u\n", i);
+				printf("Result: %u\n", i);
 				break ;
 			}
 		}

@@ -33,5 +33,5 @@ static uint32_t euler_3(void)
 
 int             main(void)
 {
-    printf("Result : %u\n", euler_3());
+    printf("Result: %u\n", euler_3());
 }

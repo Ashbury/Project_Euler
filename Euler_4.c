@@ -56,6 +56,6 @@ int		main()
 			i = j;
 		}
 	}
-	printf("Result : %d\n", res);
+	printf("Result: %d\n", res);
 	return 0;
 }

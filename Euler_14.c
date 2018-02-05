@@ -45,6 +45,6 @@ int     main(void)
             highest_number = i;
         }
     }
-    printf("The under one million integer with the longest Collatz chain is : %zu with a length of %zu\n", highest_number, highest_chain);
+    printf("The under one million integer with the longest Collatz chain is %zu with a length of %zu\n", highest_number, highest_chain);
     return 0;
 }

@@ -132,6 +132,6 @@ int	main(void)
 	for (size_t i = 1; i <= 1000; i++)
 		result += compute_number(i);
 
-	printf("Result : %zu\n", result);
+	printf("Result: %zu\n", result);
 	return 0;
 }

@@ -83,6 +83,6 @@ int			main(void)
 					result = tmp;
 			}
 		}
-	printf("Result : %zu\n", result);
+	printf("Result: %zu\n", result);
 	return 0;
 }

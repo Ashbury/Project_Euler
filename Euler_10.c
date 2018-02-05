@@ -47,6 +47,6 @@ int     main(void)
         if (is_prime(i))
             ret += i;
     }
-    printf("Result : %llu\n", ret);
+    printf("Result: %llu\n", ret);
     return 0;
 }

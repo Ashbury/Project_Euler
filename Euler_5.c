@@ -15,7 +15,7 @@ int main(void)
         if (i % 3 == 0 && i % 5 == 0 && i % 7 == 0 && i % 11 == 0 && i % 13 == 0 
             && i % 16 == 0 && i % 17 == 0 && i % 18 == 0 && i % 19 ==0 && i % 20 == 0)
         {
-            printf("Result : %u\n", i);
+            printf("Result: %u\n", i);
             break ;
         }
     }

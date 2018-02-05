@@ -45,6 +45,6 @@ int		main(void)
 		if (ret > result)
 			result = ret;
 	}
-	printf("Result : %llu\n", result);
+	printf("Result: %llu\n", result);
 	return 0;
 }
