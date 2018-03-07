@@ -55,6 +55,9 @@ static size_t	compute_name_value(char *name)
 	return ret;
 }
 
+/*
+** I will probable implement a strsplit and thus not use strtok
+*/
 static void		euler_22(char *file)
 {
 	char	*name = strtok(file, ",");
