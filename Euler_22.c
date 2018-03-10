@@ -8,9 +8,11 @@
 
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 static int		get_file(char **file, size_t *len)
 {
@@ -50,33 +52,147 @@ static size_t	compute_name_value(char *name)
 	size_t	ret = 0;
 	for(size_t i = 1; i < len; i++)
 	{
-		ret += name[i] - '@';
+		ret += (size_t)(name[i] - '@');
 	}
 	return ret;
 }
 
-static void		euler_22(char *file)
+static void		euler_22(char **names, size_t nb_names)
 {
-	char	*name = strtok(file, ",");
-	size_t	result = compute_name_value(name);
-	size_t	i = 2;
+	size_t	result = 0;
+	size_t	i = 0;
 
-	while ((name = strtok(NULL, ",") != NULL))
+	while (i < nb_names)
 	{
-		result += compute_name_value(name) * i;
+		result += compute_name_value(names[i]) * (i + 1);
 		i++;
 	}
-	printf("Result: %zu.", result);
+	printf("Result: %zu\n", result);
+}
+
+static char		*strnew(size_t size)
+{
+	char	*str;
+
+	if ((str = malloc(size + 1)))
+	{
+		bzero(str, size + 1);
+		return (str);
+	}
+	return (NULL);
+}
+
+
+static char		*strsub(char const *str, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*ret;
+
+	i = 0;
+	if (str == NULL || len == 0)
+		return (strnew(0));
+	if (len && strlen(str) >= len && (ret = strnew(len)))
+	{
+		while (i < len && str[i])
+		{
+			ret[i] = str[start + i];
+			i++;
+		}
+		ret[len] = '\0';
+		return (ret);
+	}
+	return (NULL);
+}
+
+static void		fill(char const *str, char separator, char **result)
+{
+	int		start;
+	size_t	pos;
+	size_t	i;
+
+	pos = 0;
+	start = -1;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != separator)
+			if (i == 0 || str[i - 1] == separator)
+				start = (int)i;
+		if (start != -1 && (str[i + 1] == separator || str[i + 1] == '\0'))
+		{
+			result[pos] = strsub(str, (unsigned int)start,
+			i - (unsigned long)start + 1);
+			start = -1;
+			pos++;
+		}
+		i++;
+	}
+}
+
+static char		**strsplit(char const *str, char separator)
+{
+	char	**result;
+	size_t	count;
+	size_t	i;
+
+	if (!str)
+		return (NULL);
+	count = 1;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != separator)
+			if (i == 0 || str[i - 1] == separator)
+				count++;
+		i++;
+	}
+	if (!(result = malloc(sizeof(*result) * (unsigned long)count)))
+		return (NULL);
+	fill(str, separator, result);
+	result[count - 1] = NULL;
+	return (result);
+}
+
+/*
+** Weirdest cast problem I have encountered at the moment.
+** I had to use this to be accepted by clang's -Weverything.
+** Quite interesting tough. The unix man says:
+** The actual arguments to this function are "pointers to
+** pointers to char", but strcmp(3) arguments are "pointers
+** to char", hence the following cast plus dereference.
+*/
+static int		compare_names(const void *n1, const void *n2)
+{
+	return strcmp(*(char * const *)n1, *(char * const *) n2);
+}
+
+static void		sort_names(char *names[], size_t len)
+{
+	qsort(names, len, sizeof(char *), compare_names);
+}
+
+static size_t	double_array_len(void **array)
+{
+	size_t	len = 0;
+	while (array[len] != NULL)
+		len++;
+	return len;
 }
 
 int				main(void)
 {
-	int		len = 0;
 	char	*file;
+	size_t	file_len = 0;
+	char	**names;
+	size_t	nb_names;
 
-	if (get_file(&file, &len) == 0)
+	if (get_file(&file, &file_len) == 0)
 		return -1;
 
-	euler_22(file);
+	names = strsplit(file, ',');
+	nb_names = double_array_len((void**)names);
+	sort_names(names, nb_names);
+	euler_22(names, nb_names);
+	munmap(file, file_len);
 	return 0;
 }
