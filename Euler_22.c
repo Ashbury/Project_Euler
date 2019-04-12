@@ -83,7 +83,7 @@ static char		*strnew(size_t size)
 }
 
 
-static char		*strsub(char const *str, unsigned int start, size_t len)
+static char		*strsub(const char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*ret;
@@ -104,7 +104,7 @@ static char		*strsub(char const *str, unsigned int start, size_t len)
 	return (NULL);
 }
 
-static void		fill(char const *str, char separator, char **result)
+static void		fill(const char *str, char separator, char **result)
 {
 	int		start;
 	size_t	pos;
@@ -129,7 +129,7 @@ static void		fill(char const *str, char separator, char **result)
 	}
 }
 
-static char		**strsplit(char const *str, char separator)
+static char		**strsplit(const char *str, char separator)
 {
 	char	**result;
 	size_t	count;
